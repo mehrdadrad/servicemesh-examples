@@ -1,0 +1,1 @@
+BACKEND=http://localhost:8080/time go run .

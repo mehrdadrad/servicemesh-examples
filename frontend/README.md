@@ -1,0 +1,1 @@
+MIDDLEWARE=http://localhost:8081/time go run .
