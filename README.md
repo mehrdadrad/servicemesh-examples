@@ -3,19 +3,29 @@
 
 
 ## LINKERD
+#### install linkerd
+```
+from: https://linkerd.io/2/getting-started/
 
+curl -sL https://run.linkerd.io/install | sh
+export PATH=$PATH:$HOME/.linkerd2/bin
+linkerd install | kubectl apply -f -
+```
+#### deploy microservices
 ```
 cd k8s
 
 kubectl apply -f backend.yaml
 kubectl apply -f middleware.yaml
 kubectl apply -f frontend.yaml
-
+```
+#### linkerd injection
+```
 kubectl get deploy/frontend-deployment -o yaml | linkerd inject - \ | kubectl apply -f -
 kubectl get deploy/middleware-deployment -o yaml | linkerd inject - \ | kubectl apply -f -
 kubectl get deploy/backend-deployment -o yaml | linkerd inject - \ | kubectl apply -f -
 ```
-
+#### pods status
 ```
 kubectl get pods
 NAME                                     READY   STATUS    RESTARTS   AGE
@@ -34,3 +44,14 @@ backend-deployment         2/2   100.00%   0.5rps          75ms          98ms   
 frontend-deployment        2/2   100.00%   0.5rps          75ms          98ms         100ms          2
 middleware-deployment      2/2   100.00%   0.5rps          75ms          98ms         100ms          6
 ```
+
+#### linkerd dashboard
+
+```
+linkerd dashboard &
+```
+
+![linkerd](/imgs/Linkerd.png?raw=true "linkerd")
+![linkerd](/imgs/Linkerd_Control_Plane.png?raw=true "linkerd")
+![linkerd](/imgs/Linkerd_Backend_Grafana.png?raw=true "linkerd")
+![linkerd](/imgs/Linkerd_Middleware_Grafana.png?raw=true "linkerd")
