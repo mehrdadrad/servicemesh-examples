@@ -29,8 +29,8 @@ middleware-deployment-7599d78474-lxrjm   2/2     Running   0          4m11s
 
 ```
 linkerd stat deploy
-NAME                    MESHED   SUCCESS   RPS   LATENCY_P50   LATENCY_P95   LATENCY_P99   TCP_CONN
-backend-deployment         2/2         -     -             -             -             -          -
-frontend-deployment        2/2         -     -             -             -             -          -
-middleware-deployment      2/2         -     -             -             -             -          -
+NAME                    MESHED   SUCCESS      RPS   LATENCY_P50   LATENCY_P95   LATENCY_P99   TCP_CONN
+backend-deployment         2/2   100.00%   0.5rps          75ms          98ms         100ms          6
+frontend-deployment        2/2   100.00%   0.5rps          75ms          98ms         100ms          2
+middleware-deployment      2/2   100.00%   0.5rps          75ms          98ms         100ms          6
 ```
