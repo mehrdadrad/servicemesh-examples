@@ -17,6 +17,7 @@ spec:
       containers:
       - name: middleware
         image: mehrdadrad/middleware:0.1
+        imagePullPolicy: Always
         env:
         - name: BACKEND
           value: http://backend.default.svc.cluster.local:8080/time

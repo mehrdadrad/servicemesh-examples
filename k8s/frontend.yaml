@@ -17,6 +17,7 @@ spec:
       containers:
       - name: frontend
         image: mehrdadrad/frontend:0.1
+        imagePullPolicy: Always
         env:
         - name: MIDDLEWARE
           value: http://middleware.default.svc.cluster.local:8081/time
