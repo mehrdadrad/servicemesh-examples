@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"net"
 	"net/http"
 	"os"
 
@@ -10,7 +9,7 @@ import (
 )
 
 type service struct {
-	port    string
+	addr    string
 	backend string
 }
 
@@ -26,9 +25,9 @@ func main() {
 }
 
 func newService() *service {
-	port := os.Getenv("FRONTEND_PORT")
-	if port == "" {
-		port = "8082"
+	addr := os.Getenv("FRONTEND_ADDR")
+	if addr == "" {
+		addr = "8082"
 	}
 
 	backend := os.Getenv("MIDDLEWARE")
@@ -37,16 +36,16 @@ func newService() *service {
 	}
 
 	return &service{
-		port:    port,
+		addr:    addr,
 		backend: backend,
 	}
 }
 
 func (s service) start() {
-	log.Println("frontend is starting")
+	log.Printf("frontend is starting %s", s.addr)
 	mux := http.NewServeMux()
 	mux.HandleFunc("/time", getTime(s.backend))
-	log.Println(http.ListenAndServe(net.JoinHostPort("", s.port), mux))
+	log.Println(http.ListenAndServe(s.addr, mux))
 }
 
 func getTime(backend string) http.HandlerFunc {

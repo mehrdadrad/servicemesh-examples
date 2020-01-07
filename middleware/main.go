@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"log"
-	"net"
 	"net/http"
 	"os"
 
@@ -11,7 +10,7 @@ import (
 )
 
 type service struct {
-	port    string
+	addr    string
 	backend string
 }
 
@@ -27,9 +26,9 @@ func main() {
 }
 
 func newService() *service {
-	port := os.Getenv("MIDDLEWARE_PORT")
-	if port == "" {
-		port = "8081"
+	addr := os.Getenv("MIDDLEWARE_ADDR")
+	if addr == "" {
+		addr = ":8081"
 	}
 
 	backend := os.Getenv("BACKEND")
@@ -38,16 +37,16 @@ func newService() *service {
 	}
 
 	return &service{
-		port:    port,
+		addr:    addr,
 		backend: backend,
 	}
 }
 
 func (s service) start() {
-	log.Println("middleware is starting")
+	log.Printf("middleware is starting %s", s.addr)
 	mux := http.NewServeMux()
 	mux.HandleFunc("/time", getTime(s.backend))
-	log.Println(http.ListenAndServe(net.JoinHostPort("", s.port), mux))
+	log.Println(http.ListenAndServe(s.addr, mux))
 }
 
 func getTime(backend string) http.HandlerFunc {
