@@ -36,7 +36,16 @@ frontend-deployment-697fb6566-z78sx      2/2     Running   0          4m12s
 middleware-deployment-7599d78474-d4ftv   2/2     Running   0          4m24s
 middleware-deployment-7599d78474-lxrjm   2/2     Running   0          4m11s
 ```
+#### load test
+```
+kubectl get svc frontend-external
+NAME                TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)          AGE
+frontend-external   LoadBalancer   10.107.208.163   192.168.55.102   8082:32415/TCP   16h
 
+while true; do curl 192.168.55.102:8082/time; sleep 2; done
+```
+
+#### linkerd cmd stat deployment
 ```
 linkerd stat deploy
 NAME                    MESHED   SUCCESS      RPS   LATENCY_P50   LATENCY_P95   LATENCY_P99   TCP_CONN
@@ -45,7 +54,7 @@ frontend-deployment        2/2   100.00%   0.5rps          75ms          98ms   
 middleware-deployment      2/2   100.00%   0.5rps          75ms          98ms         100ms          6
 ```
 
-#### linkerd dashboard
+#### linkerd and grafana dashboards screenshots
 
 ```
 linkerd dashboard &
