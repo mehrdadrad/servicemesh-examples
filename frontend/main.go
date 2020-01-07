@@ -27,7 +27,7 @@ func main() {
 func newService() *service {
 	addr := os.Getenv("FRONTEND_ADDR")
 	if addr == "" {
-		addr = "8082"
+		addr = ":8082"
 	}
 
 	backend := os.Getenv("MIDDLEWARE")
