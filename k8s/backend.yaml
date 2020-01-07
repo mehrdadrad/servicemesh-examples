@@ -17,6 +17,7 @@ spec:
       containers:
       - name: backend
         image: mehrdadrad/backend:0.1
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080			                
 ---
