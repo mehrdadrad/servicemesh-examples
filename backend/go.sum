@@ -1,0 +1,3 @@
+github.com/mehrdadrad/servicemesh-examples v0.0.0-20200108181744-7e49d42d9301 h1:BQEHd/lfTwWoH9MnTXE0EchZvj+zTPazKFoNH962AY4=
+github.com/mehrdadrad/servicemesh-examples/pkg/http v0.0.0-20200108184356-51fd11478b3e h1:OZtGi+W3Y6/8sgodLNENF9lfKmfC6KA8OyIOdNJOK4U=
+github.com/mehrdadrad/servicemesh-examples/pkg/http v0.0.0-20200108184356-51fd11478b3e/go.mod h1:ykP/EdRZRhnkwXDAig0v4hZaVc2k6X+3x+wUFR1hteg=
