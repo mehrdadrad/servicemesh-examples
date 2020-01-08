@@ -50,10 +50,12 @@ func (s service) start() {
 
 func getTime(backend string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		resp, err := h.HttpClient("get", backend)
+		resp, code, err := h.HTTPClient("get", backend)
 		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(err.Error()))
 		} else {
+			w.WriteHeader(code)
 			w.Write([]byte("current time "))
 			w.Write(resp)
 		}

@@ -51,17 +51,20 @@ func (s service) start() {
 
 func getTime(backend string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		resp, err := h.HttpClient("get", backend)
+		resp, code, err := h.HTTPClient("get", backend)
 		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(err.Error()))
 		} else {
 			t := &time{}
 			err := json.Unmarshal(resp, t)
 			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
 				w.Write([]byte(err.Error()))
 				return
 			}
 
+			w.WriteHeader(code)
 			w.Write([]byte(t.Date + " " + t.Time))
 		}
 	}

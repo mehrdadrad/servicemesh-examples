@@ -36,10 +36,12 @@ func (s service) start() {
 }
 
 func getTime(w http.ResponseWriter, r *http.Request) {
-	resp, err := h.HttpClient("get", "http://time.jsontest.com")
+	resp, code, err := h.HTTPClient("get", "http://time.jsontest.com")
 	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(err.Error()))
 	} else {
+		w.WriteHeader(code)
 		w.Write(resp)
 	}
 }
