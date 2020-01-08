@@ -1,19 +1,19 @@
 # servicemesh-examples
 
+![topo](/imgs/topo.png?raw=true "linkerd")
 
 
 ## LINKERD
 #### install linkerd
 ```
-from: https://linkerd.io/2/getting-started/
-
 curl -sL https://run.linkerd.io/install | sh
 export PATH=$PATH:$HOME/.linkerd2/bin
 linkerd install | kubectl apply -f -
 ```
 #### deploy microservices
 ```
-cd k8s
+git clone https://github.com/mehrdadrad/servicemesh-examples.git
+cd servicemesh-examples/k8s
 
 kubectl apply -f backend.yaml
 kubectl apply -f middleware.yaml
