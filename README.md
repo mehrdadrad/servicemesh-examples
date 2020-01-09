@@ -66,10 +66,10 @@ frontend-deployment-697fb6566-5s4rw     middleware-deployment-7599d78474-kn4hn  
 frontend-deployment-697fb6566-5s4rw     middleware-deployment-7599d78474-wqw8r  GET         /time      24    78ms    96ms    88ms       100.00%
 10.44.0.0                               frontend-deployment-697fb6566-5s4rw     GET         /time      24    87ms   111ms    93ms       100.00%
 middleware-deployment-7599d78474-kn4hn  backend-deployment-5649869497-dtscv     GET         /time      22    70ms    97ms    83ms       100.00%
-backend-deployment-5649869497-dtscv     172.217.14.83                           GET         /          22    68ms    89ms    72ms       100.00%
+backend-deployment-5649869497-dtscv     12.23.14.17                             GET         /          22    68ms    89ms    72ms       100.00%
 middleware-deployment-7599d78474-wqw8r  backend-deployment-5649869497-dtscv     GET         /time      22    70ms    87ms    77ms       100.00%
 middleware-deployment-7599d78474-kn4hn  backend-deployment-5649869497-rvvwc     GET         /time      22    74ms    99ms    77ms       100.00%
-backend-deployment-5649869497-rvvwc     172.217.14.83                           GET         /          22    70ms    93ms    76ms       100.00%
+backend-deployment-5649869497-rvvwc     12.23.14.17                             GET         /          22    70ms    93ms    76ms       100.00%
 middleware-deployment-7599d78474-wqw8r  backend-deployment-5649869497-rvvwc     GET         /time      22    74ms    88ms    80ms       100.00%
 frontend-deployment-697fb6566-57h48     middleware-deployment-7599d78474-wqw8r  GET         /time      20    77ms    98ms    84ms       100.00%
 frontend-deployment-697fb6566-57h48     middleware-deployment-7599d78474-kn4hn  GET         /time      20    83ms   107ms    87ms       100.00%
@@ -101,9 +101,9 @@ end id=15:0 proxy=in  src=10.44.0.0:57314 dst=10.32.0.15:8082 tls=not_provided_b
 linkerd tap deploy/backend-deployment
 
 req id=18:0 proxy=in  src=10.32.0.20:44304 dst=10.32.0.3:8080 tls=true :method=GET :authority=backend.default.svc.cluster.local:8080 :path=/time
-req id=18:1 proxy=out src=10.32.0.3:34434 dst=172.217.14.83:80 tls=not_provided_by_service_discovery :method=GET :authority=time.jsontest.com :path=/
-rsp id=18:1 proxy=out src=10.32.0.3:34434 dst=172.217.14.83:80 tls=not_provided_by_service_discovery :status=200 latency=71557µs
-end id=18:1 proxy=out src=10.32.0.3:34434 dst=172.217.14.83:80 tls=not_provided_by_service_discovery duration=63µs response-length=108B
+req id=18:1 proxy=out src=10.32.0.3:34434 dst=12.23.14.17:80  tls=not_provided_by_service_discovery :method=GET :authority=time.jsontest.com :path=/
+rsp id=18:1 proxy=out src=10.32.0.3:34434 dst=12.23.14.17:80  tls=not_provided_by_service_discovery :status=200 latency=71557µs
+end id=18:1 proxy=out src=10.32.0.3:34434 dst=12.23.14.17:80  tls=not_provided_by_service_discovery duration=63µs response-length=108B
 rsp id=18:0 proxy=in  src=10.32.0.20:44304 dst=10.32.0.3:8080 tls=true :status=200 latency=74675µs
 end id=18:0 proxy=in  src=10.32.0.20:44304 dst=10.32.0.3:8080 tls=true duration=54µs response-length=100B
 ```
