@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: middleware
-        image: mehrdadrad/middleware:0.1
+        image: mehrdadrad/middleware:latest
         imagePullPolicy: Always
         env:
         - name: BACKEND

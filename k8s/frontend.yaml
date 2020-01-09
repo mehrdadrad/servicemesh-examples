@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: mehrdadrad/frontend:0.1
+        image: mehrdadrad/frontend:latest
         imagePullPolicy: Always
         env:
         - name: MIDDLEWARE
